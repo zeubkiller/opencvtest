@@ -2,8 +2,9 @@ from Tkinter import Frame, Button, Scale, Tk, Label, X, LEFT
 
 class ValueUpdater:
     """Create a parameter that can be displayed as a scale button"""
-    def __init__(self, label, value, top, bottom, callback):
-        self._value = value
+    def __init__(self, label, value, top, bottom, callback, is_int=True):
+        self._is_int = is_int
+        self._value = float(value)
         self._label = label
         self._top = top
         self._bottom = bottom
@@ -11,7 +12,7 @@ class ValueUpdater:
 
     def create_scale(self, region):
         """ Create scale for this parameter"""
-        if isinstance(self._value, int):
+        if self._is_int:
             resolution = 1
         else:
             resolution = 0.001
@@ -30,10 +31,10 @@ class ValueUpdater:
 
     def convert_value(self, value):
         """Convert a value in int or float depending on the internal value"""
-        if isinstance(value, int):
-            new_value = int(value)
-        else:
-            new_value = float(value)
+        #if isinstance(value, int):
+        #    new_value = int(value)
+        #else:
+        new_value = float(value)
         return new_value
 
     def update_value(self, value):
