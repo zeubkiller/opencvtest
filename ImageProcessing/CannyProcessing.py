@@ -1,4 +1,3 @@
-#import numpy as np
 import cv2
 from App.ValueUpdater import ValueUpdater
 from Utils import resize
@@ -6,7 +5,7 @@ from Utils import resize
 class CannyProcessing:
     """Apply the Canny processing"""
     def __init__(self, app, img):
-        self.img = img.copy()
+        self.img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
         self.threshold1 = ValueUpdater('Threshold1', 100.0, 0.0, 2000.0, self.apply)
         self.threshold2 = ValueUpdater('Threshold2', 500.0, 0.0, 2000.0, self.apply)
@@ -19,7 +18,7 @@ class CannyProcessing:
 
     def apply(self):
         """Apply the method"""
-        self.processed_img = cv2.Canny(self.img, self.threshold1.value, self.threshold2.value)
+        self.processed_img = cv2.Canny(self.img_gray, self.threshold1.value, self.threshold2.value)
         self.display()
 
     def display(self):
