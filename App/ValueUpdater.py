@@ -18,7 +18,8 @@ class ValueUpdater:
         frame = Frame(region)
         label = Label(frame, text=self._label)
         label.pack()
-        scale = Scale(frame, from_=self._top, to=self._bottom, command=self._callback, resolution=resolution)
+        scale = Scale(frame, from_=self._top, to=self._bottom, command=self.update_value, resolution=resolution)
+        scale.set(self._value)
         scale.pack()
         frame.pack(side=LEFT)
 
