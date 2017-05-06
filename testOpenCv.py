@@ -1,8 +1,8 @@
 from matplotlib import pyplot as plt
 import numpy as np
 import cv2
-from App.app import *
-from ImageProcessing.imageprocessing import *
+from App.MainApp import App
+from ImageProcessing.CannyProcessing import CannyProcessing
 
 def openCv():
     img = cv2.imread('testCoockie.png')

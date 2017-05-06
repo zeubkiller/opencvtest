@@ -1,6 +1,6 @@
 #import numpy as np
 import cv2
-from App.app import *
+from App.ValueUpdater import ValueUpdater
 
 def resize(img):
     """Resize an image to half his size"""
